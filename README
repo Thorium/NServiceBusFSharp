@@ -2,6 +2,8 @@ This is simple demo how to use NServiceBus from F-Sharp (F#) programming languag
 
 FSharp is a multi-paradigm programming language, targeting the .NET Framework.
 
+(Ensure first that you have NServiceBus and F# installed...)
+
 NServiceBus is service bus for .NET (based on MSMQ and RavenDB).
 https://github.com/NServiceBus/NServiceBus
 
