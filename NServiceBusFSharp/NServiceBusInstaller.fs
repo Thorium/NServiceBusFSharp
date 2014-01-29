@@ -9,15 +9,22 @@ type NServiceBusInstaller() =
             | null -> failwith("InputQueue not defined in settings.")
             | "" -> failwith("InputQueue empty in settings.")
             | endpoint -> 
+                //Configure.Serialization.Xml() |> ignore
+                Configure.Serialization.Json() |> ignore
+                //Configure.Serialization.Bson() |> ignore
+                
+                //Configure.Transactions.Advanced(fun t -> t.IsolationLevel(System.Transactions.IsolationLevel...)) |> ignore
+
                 let assemblies = [System.Reflection.Assembly.GetExecutingAssembly()]
                 NServiceBus.Configure
                     .With(assemblies) // Assemblies to register
+                     //.Log4Net()
                     .DefineEndpointName(endpoint) // Queue to use
                     .CastleWindsorBuilder(container) // Use castle to resolve
                     .DefiningEventsAs(fun t -> (t.Namespace <> null) && t.Namespace.EndsWith("Events", false, System.Globalization.CultureInfo.CurrentCulture)) // register all classes from .Events namespaces as NServiceBus events
                     .MsmqSubscriptionStorage()
-                    .XmlSerializer() // Events are xml-serialized
-                    .MsmqTransport()
+                    .UseTransport<Msmq>()
+                    .DisableTimeoutManager()
                     .UnicastBus()
                     .LoadMessageHandlers()
                     .CreateBus()

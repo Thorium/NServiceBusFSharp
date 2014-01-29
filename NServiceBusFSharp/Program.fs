@@ -13,7 +13,8 @@ module Program =
 
     [<EntryPoint>]
     let main argv = 
-
+        System.Console.WriteLine("Installing...")
+        
         let container = new Castle.Windsor.WindsorContainer()
         container.Install(new NServiceBusInstaller()) |> ignore
 
