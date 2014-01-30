@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Nservicebusfsharp by Thorium</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/Thorium/NServiceBusFSharp">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Nservicebusfsharp</h1>
+            <h2>Demo how to use NServiceBus from F-Sharp</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/Thorium/NServiceBusFSharp/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/Thorium/NServiceBusFSharp/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <p>This is simple demo how to use NServiceBus from F-Sharp (F#) programming language.</p>
+
+<p>(Ensure first that you have NServiceBus and F# installed...)</p>
+
+<p>FSharp is a multi-paradigm programming language, targeting the .NET Framework.</p>
+
+<p>NServiceBus is service bus for .NET (based on MSMQ and RavenDB).
+<a href="https://github.com/NServiceBus/NServiceBus">https://github.com/NServiceBus/NServiceBus</a></p>
+
+<p>Description of the solution:
+Events.fs - Events, currently only one, MyEvent that is sent to message bus. Has one parameter.
+MyEventHandler.fs - Example of listener/processor who handles the event (and usually would send a new one(s) after done). This could be a state machine state.
+NServiceBusInstaller.fs - Castle Windsor IoC container registration
+Program.fs - Small infra to launch the first event
+App.config - NServiceBus, Castle &amp; MSMQ settings
+packages.config - Nuget package management settings</p>
+
+<p>This solution uses NuGet, but there seems to be some problems with NuGet and VS2012 automation still...
+This could be enough for the package management console: Install-Package NServiceBus.CastleWindsor 3.3.3
+as the NServiceBus.CastleWindsor will have dependency to NServiceBus and Castle Windsor.</p>
+
+<p>Why to use NServiceBus from F# when we have MailboxProcessors?</p>
+
+<ul>
+<li>Usually I won't but... How about communication with already existing C# SOA architecture...</li>
+<li>By default F# MailboxProcessor can't do recovery (from e.g. some kind of hardware failure)</li>
+<li>Actor/Agents-model and message based communication are very similar!</li>
+</ul>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/Thorium">Thorium</a> can be found on <a href="https://github.com/Thorium/NServiceBusFSharp">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
